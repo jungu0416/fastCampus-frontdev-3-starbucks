@@ -40,3 +40,35 @@ fadeEls.forEach(function (fadeEl, index) {
     opacity: 1
   });
 })
+
+new Swiper('.notice-line .swiper-container', {
+  direction: 'vertical', // 수직 슬라이드
+  autoplay: true, // 자동 재생 여부
+  loop: true // 반복 재생 여부
+});
+
+new Swiper('.promotion .swiper-container' , {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  centeredSlides: true,
+  loop: true,
+  // autoplay: {
+  //   delay: 5000
+  // },
+  pagination: {
+    el: '.promotion .swiper-pagination',
+    clickable: true
+  },
+  navigation: {
+    prevEl: '.promotion .swiper-prev',
+    nextEl: '.promotion .swiper-next',
+  }
+}); 
+
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromotion = false;
+
+promotionToggleBtn.addEventListener('click', function() {
+  promotionEl.classList.toggle('hide');
+});
