@@ -16,6 +16,7 @@ searchInputEl.addEventListener('blur', function() {
 });
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function() {
   if (window.scrollY > 500) {
@@ -23,13 +24,27 @@ window.addEventListener('scroll', _.throttle(function() {
       opacity: 0,
       display: 'none'
     });
+
+    gsap.to(toTopEl, .2, {
+      x: 0,
+    })
   } else {
     gsap.to(badgeEl, .4, {
       opacity: 1,
       display: 'block'
     });
+    
+    gsap.to(toTopEl, .2, {
+      x: 100,
+    })
   }
 },300));
+
+toTopEl.addEventListener('click', function () {
+  gsap.to(window, .7, {
+    scrollTo: 0
+  });
+})
 
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
@@ -117,3 +132,4 @@ spyEls.forEach(function (spyEl) {
 
 const thisYear = document.querySelector('.this-year');
 thisYear.textContent = new Date().getFullYear();
+
